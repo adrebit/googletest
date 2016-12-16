@@ -135,7 +135,11 @@ macro(config_compiler_and_linker)
   set(cxx_exception "${CMAKE_CXX_FLAGS} ${cxx_base_flags} ${cxx_exception_flags}")
   set(cxx_no_exception
     "${CMAKE_CXX_FLAGS} ${cxx_base_flags} ${cxx_no_exception_flags}")
-  set(cxx_default "${cxx_exception}")
+  if(gtest_compile_without_exceptions)
+    set(cxx_default "${cxx_no_exception}")
+  else()
+    set(cxx_default "${cxx_exception}")
+  endif()
   set(cxx_no_rtti "${cxx_default} ${cxx_no_rtti_flags}")
   set(cxx_use_own_tuple "${cxx_default} -DGTEST_USE_OWN_TR1_TUPLE=1")
 

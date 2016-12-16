@@ -27,6 +27,11 @@ option(
   "Build gtest with internal symbols hidden in shared libraries."
   OFF)
 
+option(
+  gtest_compile_without_exceptions
+  "Build the gtest library with c++ exceptions disabled."
+  OFF)
+
 # Defines pre_project_set_up_hermetic_build() and set_up_hermetic_build().
 include(cmake/hermetic_build.cmake OPTIONAL)
 
